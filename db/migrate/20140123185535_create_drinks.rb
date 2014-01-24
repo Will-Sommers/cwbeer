@@ -5,7 +5,7 @@ class CreateDrinks < ActiveRecord::Migration
     	t.string :grade
     	t.string :name
     	t.string :ingredient
-    	t.integer :row_position 
+    	t.integer :row_position
       	t.timestamps
     end
   end

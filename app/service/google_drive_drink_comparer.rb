@@ -17,4 +17,6 @@ class GoogleDriveDrinkComparer
       puts @ws[row, 5]
     end
   end
+
+  def 
 end
