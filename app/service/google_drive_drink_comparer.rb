@@ -10,11 +10,12 @@ class GoogleDriveDrinkComparer
   def initialize
     session = GoogleDrive.login(ENV["GOOGLE_USERNAME"], ENV["GOOGLE_PASSWORD"])
     @ws = session.spreadsheet_by_key(ENV["SPREADSHEET_KEY"]).worksheets[0]
+    save_wine
   end
 
-  def print_column_five
+  def save_wine
     for row in 1..@ws.num_rows
-      puts @ws[row, 5]
+      save_drink(row, 1)
     end
   end
 
@@ -23,10 +24,21 @@ class GoogleDriveDrinkComparer
   end
 
   def save_drink(row, column)
-    grade = @ws[row, column + 1]
-    drink = Drink.new(name: @ws[row, column], grade: grade, row_position: row)
-    drink.drink_type = Drink::COLUMN_HEADERS[column.to_s]
-    drink.save
+    column_name = Drink::COLUMN_HEADERS[column.to_s]
+
+    name = @ws[row, column]
+    unless name.blank?
+      unless is_duplicate?(row, column_name)
+        grade = @ws[row, column + 1]
+        drink = Drink.new(name: name, grade: grade, 
+          row_position: row, drink_type: column_name)
+        drink.save
+      end
+    end
+  end
+
+  def is_duplicate?(row, drink_type)
+    Drink.where(row_position: row, drink_type: drink_type).present?
   end
 
 end
