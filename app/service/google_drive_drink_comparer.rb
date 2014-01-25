@@ -19,15 +19,13 @@ class GoogleDriveDrinkComparer
   end
 
   def test
-    save_drink(@ws[397, 5],@ws[397, 6])
+    save_drink(397, 5)
   end
 
-  def save_drink(name, grade)
-    drink = Drink.new
-    drink.type = "beer"
-    drink.name = name
-    drink.grade = grade
-    drink.row_position = 397
+  def save_drink(row, column)
+    grade = @ws[row, column + 1]
+    drink = Drink.new(name: @ws[row, column], grade: grade, row_position: row)
+    drink.drink_type = Drink::COLUMN_HEADERS[column.to_s]
     drink.save
   end
 
