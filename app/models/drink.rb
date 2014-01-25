@@ -10,6 +10,7 @@ class Drink < ActiveRecord::Base
                      "7" => "cocktail",
                      "10" => "whiskey" }
 
-
+    scope :rated, where("grade is not NULL") 
+    scope :unrated, where(grade: nil)
 end
 
