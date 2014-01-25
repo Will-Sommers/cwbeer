@@ -14,7 +14,7 @@ class GoogleDriveDrinkComparer
   end
 
   def save_wine
-    for row in 1..@ws.num_rows
+    for row in 2..@ws.num_rows
       save_drink(row, 1)
     end
   end
@@ -30,7 +30,7 @@ class GoogleDriveDrinkComparer
     unless name.blank?
       unless is_duplicate?(row, column_name)
         grade = @ws[row, column + 1]
-        drink = Drink.new(name: name, grade: grade, 
+        drink = Drink.new(name: name, grade: grade,
           row_position: row, drink_type: column_name)
         drink.save
       end
