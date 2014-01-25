@@ -17,4 +17,18 @@ class GoogleDriveDrinkComparer
       puts @ws[row, 5]
     end
   end
+
+  def test
+    save_drink(@ws[397, 5],@ws[397, 6])
+  end
+
+  def save_drink(name, grade)
+    drink = Drink.new
+    drink.type = "beer"
+    drink.name = name
+    drink.grade = grade
+    drink.row_position = 397
+    drink.save
+  end
+
 end
