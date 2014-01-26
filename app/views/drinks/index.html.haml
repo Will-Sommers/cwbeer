@@ -1,0 +1,29 @@
+.container
+
+	#beer
+		%h2 Beer
+		%ul
+			- for beer in @drinks.beer
+				%li=beer.name
+	#cocktail
+		%h2	Cocktail
+		%ul
+			- for cocktail in @drinks.cocktail
+				%li=cocktail.name
+	#other
+		%h2 Other
+		%ui
+			- for other in @drinks.other
+				%li=other.name
+	#whiskey
+		%h2	Whiskey
+		%ui
+			- for whiskey in @drinks.whiskey
+				%li 
+					Whiskey:
+					=whiskey.name
+	#wine
+		%h2	Wine 
+		%ul
+			- for wine in @drinks.wine
+				%li=wine.name
