@@ -12,12 +12,12 @@
 				%li=cocktail.name
 	#other
 		%h2 Other
-		%ui
+		%ul
 			- for other in @drinks.other
 				%li=other.name
 	#whiskey
 		%h2	Whiskey
-		%ui
+		%ul
 			- for whiskey in @drinks.whiskey
 				%li
 					=whiskey.name
