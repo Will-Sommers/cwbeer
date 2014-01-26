@@ -19,11 +19,10 @@
 		%h2	Whiskey
 		%ui
 			- for whiskey in @drinks.whiskey
-				%li 
-					Whiskey:
+				%li
 					=whiskey.name
 	#wine
-		%h2	Wine 
+		%h2	Wine
 		%ul
 			- for wine in @drinks.wine
 				%li=wine.name
