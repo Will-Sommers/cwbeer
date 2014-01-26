@@ -10,7 +10,14 @@ class Drink < ActiveRecord::Base
                      "7" => "cocktail",
                      "10" => "whiskey" }
 
-    scope :rated, where("grade is not NULL") 
-    scope :unrated, where(grade: nil)
+  scope :beer, where(drink_type: "beer")
+  scope :cocktail, where(drink_type: "cocktail")
+  scope :other, where(drink_type: "other")
+  scope :whiskey, where(drink_type: "whiskey")
+  scope :wine, where(drink_type: "wine")
+
+
+
+
 end
 
