@@ -7,6 +7,19 @@ class GoogleDriveDrinkComparer
   # Save a copy of the lastest version of the sheet for tomorrow's comparisson.
   # Disconnect from Gdrive if possible/needed
 
+  # Find a way to send emails
+  # Set up mailcatcher
+  # Button for Christian to click to refresh the google spreadsheet
+  # Some type of authentication - HENRY devise, place reload button for logged in users only
+  # Redis Sidekiq + Sidetiq
+  # Frontend work?
+  # AJAX updating
+  # Twitter bot
+  # Graphing/data normalization
+  # Clean up Google Drive Database
+  # Optimize
+
+
   def initialize
     session = GoogleDrive.login(ENV["GOOGLE_USERNAME"], ENV["GOOGLE_PASSWORD"])
     @ws = session.spreadsheet_by_key(ENV["SPREADSHEET_KEY"]).worksheets[0]

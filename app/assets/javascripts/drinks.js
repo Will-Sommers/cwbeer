@@ -18,13 +18,14 @@ $(document).ready(function() {
       type: "POST",
       url: $(this).attr('href'),
       data: {
-        "drink_count": drink_count,
-        "henryvw"    : "lives in berlin"
+        "drink_count": drink_count
       }
     }).done(function(data) {
       $('.new-drinks').text(data + " new drinks added.")
+      console.log('JSON received')
     });
 
+    console.log('When will this execute?')
     return false
   })
 })
