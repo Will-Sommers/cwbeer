@@ -14,7 +14,7 @@ class GoogleDriveDrinkComparer
   # Redis Sidekiq + Sidetiq
   # Frontend work?
   # AJAX updating
-  # Twitter bot
+  # Twitter bot - Will
   # Graphing/data normalization
   # Clean up Google Drive Database
   # Optimize
@@ -42,6 +42,9 @@ class GoogleDriveDrinkComparer
       drink = Drink.new(name: name, grade: grade,
         row_position: row, drink_type: column_header)
       drink.ingredient = @ws[row, column + 1] if column_header == "cocktail"
+
+      send_tweet(name, grade)
+
       drink.save
     end
   end
@@ -56,5 +59,13 @@ class GoogleDriveDrinkComparer
     else
       @ws[row, column + 1]
     end
+  end
+
+  def send_tweet(name, grade)
+    unless @twitter_client.present?
+      @twitter_client = DrinkTweeter.new
+    end
+    tweet = "#{name} #{grade}"
+    @twitter_client.send_tweet(tweet)
   end
 end
