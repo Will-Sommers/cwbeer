@@ -16,8 +16,8 @@ class Drink < ActiveRecord::Base
   scope :whiskey, where(drink_type: "whiskey")
   scope :wine, where(drink_type: "wine")
 
-
-
-
+  def capitalized_name
+    name.split(' ').map(&:capitalize).join(' ')
+  end
 end
 
