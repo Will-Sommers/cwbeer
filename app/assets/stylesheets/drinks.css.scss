@@ -3,7 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.container li {
-  display: none;
+.container {
+  ul {
+    width: 400px;
+    max-height: 400px;
+    overflow-y: scroll;
+    border: 2px solid #ccc;
+  }
+
+  li {
+    display: none;
+  }
 }
+
+
+.active ul li {
+  display: block;
+}
+
 
