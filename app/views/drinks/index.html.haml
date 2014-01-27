@@ -27,4 +27,4 @@
       - for wine in @drinks.wine
         %li= wine.capitalized_name
 .test
-  = link_to "Reload", "#"
+  = link_to "Reload", drinks_refresh_path, method: :post

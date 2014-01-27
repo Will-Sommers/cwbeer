@@ -6,7 +6,7 @@ Cwbeer::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'drinks#index'
 
-
+  post 'drinks/refresh' => 'drinks#refresh', as: :drinks_refresh
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -41,7 +41,7 @@ Cwbeer::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
