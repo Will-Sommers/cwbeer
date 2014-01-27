@@ -1,3 +1,5 @@
+.drink-count= Drink.count
+.new-drinks
 .container
 
   #beer
@@ -26,5 +28,4 @@
     %ul
       - for wine in @drinks.wine
         %li= wine.capitalized_name
-.test
-  = link_to "Reload", drinks_refresh_path, method: :post
+  = link_to "Reload", drinks_refresh_path, method: :post, id: "reload-link"

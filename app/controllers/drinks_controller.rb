@@ -6,7 +6,10 @@ class DrinksController < ApplicationController
 
 
   def refresh
+    binding.pry
     GoogleDriveDrinkComparer.new.save_drinks_from_spreadsheet
-    redirect_to action: "index"
+    @drinks = Drink.all
+    @total_new_drinks = Drink.count - params["drink_count"].to_i
+    render json: @total_new_drinks
   end
 end
